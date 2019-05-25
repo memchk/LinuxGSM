@@ -14,10 +14,7 @@ check.sh
 # Create a temporary file to store the steamcmd script
 scriptfile="$(mktemp)"
 
-echo "@ShutdownOnFailedCommand 1
-@NoPromptForPassword 1
-DepotDownloadProgressTimeout 6000
-force_install_dir ${serverfiles}
+echo "force_install_dir ${serverfiles}
 login ${steamuser} ${steampass}" >> $scriptfile
 
 for mod in "${workshopmods[@]}"; do
