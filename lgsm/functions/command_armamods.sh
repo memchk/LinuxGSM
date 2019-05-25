@@ -36,8 +36,12 @@ modstring="mods=\""
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
     modid=$(echo "$mod" | awk '{print $2}')
-    ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
-    modstring="${modstring}mods/@$modname\\;"
+    modtype=$(echo "$mod" | awk '{print $3}')
+
+    if [ "$modtype" != "client" ]; then
+        ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
+        modstring="${modstring}mods/@$modname\\;"
+    fi
 done
 
 modstring="${modstring}\""
@@ -55,7 +59,11 @@ ln -s "$serverfiles/a3_keys/a3.bikey" "$serverfiles/keys/"
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
     modid=$(echo "$mod" | awk '{print $2}')
-    find "$serverfiles/mods/@${modname}/" -type f -name "*.bikey" -exec ln -sf {} "$serverfiles/keys/" \;
+    modtype=$(echo "$mod" | awk '{print $3}')
+
+    if [ "$modtype" != "server" ]; then
+        find "$serverfiles/mods/@${modname}/" -type f -name "*.bikey" -exec ln -sf {} "$serverfiles/keys/" \;
+    fi
 done
 
 fn_print_complete_nl "Paste the next line into your lgsm cfg:\n${modstring}"
