@@ -39,7 +39,7 @@ for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
     modid=$(echo "$mod" | awk '{print $2}')
     ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
-    modstring="${modstring}mods/@$modname;"
+    modstring="${modstring}mods/@$modname\\;"
 done
 
 modstring="${modstring}\""
