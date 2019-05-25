@@ -14,12 +14,13 @@ check.sh
 # Create a temporary file to store the steamcmd script
 scriptfile="$(mktemp)"
 
-echo "force_install_dir ${serverfiles}
+echo "DepotDownloadProgressTimeout 6000
+force_install_dir ${serverfiles}
 login ${steamuser} ${steampass}" >> $scriptfile
 
 for mod in "${workshopmods[@]}"; do
     modid=$(echo "$mod" | awk '{print $2}')
-    echo "workshop_download_item 107410 ${modid}" >> $scriptfile
+    echo "workshop_download_item 107410 ${modid} validate" >> $scriptfile
 done
 
 echo "quit" >> $scriptfile
