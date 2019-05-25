@@ -40,7 +40,7 @@ for mod in "${workshopmods[@]}"; do
 done
 
 if [ ! -d "$serverfiles/a3_keys" ]; then
-    cp "$serverfiles/keys" "$serverfiles/a3_keys"
+    cp -r "$serverfiles/keys" "$serverfiles/a3_keys"
     rm -r "$serverfiles/keys"
     mkdir -p "$serverfiles/keys"
     ln -s "$serverfiles/a3_keys/a3.bikey" "$serverfiles/keys/"
