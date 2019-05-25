@@ -22,7 +22,7 @@ login ${steamuser} ${steampass}" >> $scriptfile
 
 for mod in "${workshopmods[@]}"; do
     modid=$(echo "$mod" | awk '{print $2}')
-    echo "workshop_download_item 107410 "${modid}" validate" >> $scriptfile
+    echo "workshop_download_item 107410 ${modid}" >> $scriptfile
 done
 
 echo "quit" >> $scriptfile
