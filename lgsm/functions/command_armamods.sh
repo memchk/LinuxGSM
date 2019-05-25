@@ -12,7 +12,7 @@ local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 check.sh
 
 
-if [ "$2" != "skipdl" ]; then
+if [ -z ${A3_SKIPDL+x} ]; then
     # Create a temporary file to store the steamcmd script
     scriptfile="$(mktemp)"
 
