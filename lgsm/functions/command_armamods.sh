@@ -33,10 +33,13 @@ ${steamcmddir}/steamcmd.sh +runscript $scriptfile
 mkdir -p "$serverfiles/mods"
 find "$serverfiles/mods/" -maxdepth 1 -type l -delete
 
+modstring = 'mods="'
+
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
     modid=$(echo "$mod" | awk '{print $2}')
     ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
+    modstring="${modstring}mods/@$modname;"
 done
 
 find "$serverfiles/keys/" -maxdepth 1 -type l -delete
@@ -53,5 +56,7 @@ for mod in "${workshopmods[@]}"; do
     modid=$(echo "$mod" | awk '{print $2}')
     find "$serverfiles/mods/@${modname}/" -type f -name "*.bikey" -exec ln -sf {} "$serverfiles/keys/" \;
 done
+
+fn_print_complete_nl "Paste the next line into your lgsm cfg:\n${modstring}"
 
 core_exit.sh
