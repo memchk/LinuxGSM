@@ -33,7 +33,7 @@ ${steamcmddir}/steamcmd.sh +runscript $scriptfile
 mkdir -p "$serverfiles/mods"
 find "$serverfiles/mods/" -maxdepth 1 -type l -delete
 
-modstring = 'mods="'
+modstring='mods="'
 
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
@@ -41,6 +41,8 @@ for mod in "${workshopmods[@]}"; do
     ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
     modstring="${modstring}mods/@$modname;"
 done
+
+modstring="${modstring}\""
 
 find "$serverfiles/keys/" -maxdepth 1 -type l -delete
 
