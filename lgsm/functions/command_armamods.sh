@@ -16,7 +16,7 @@ scriptfile="$(mktemp)"
 
 echo "@ShutdownOnFailedCommand 1
 @NoPromptForPassword 1
-DepotDownloadProgressTimeout 600
+DepotDownloadProgressTimeout 6000
 force_install_dir ${serverfiles}
 login ${steamuser} ${steampass}" >> $scriptfile
 
