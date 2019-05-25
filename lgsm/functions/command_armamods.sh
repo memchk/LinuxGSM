@@ -39,14 +39,14 @@ for mod in "${workshopmods[@]}"; do
     ln -s "$serverfiles/steamapps/workshop/content/107410/$modid" "$serverfiles/mods/@$modname"
 done
 
+find "$serverfiles/keys/" -maxdepth 1 -type l -delete
+
 if [ ! -d "$serverfiles/a3_keys" ]; then
     cp -r "$serverfiles/keys" "$serverfiles/a3_keys"
     rm -r "$serverfiles/keys"
     mkdir -p "$serverfiles/keys"
     ln -s "$serverfiles/a3_keys/a3.bikey" "$serverfiles/keys/"
 fi
-
-find "$serverfiles/keys/" -maxdepth 1 -type l -delete
 
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
