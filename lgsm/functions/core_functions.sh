@@ -51,6 +51,11 @@ fn_fetch_function
 
 # Commands
 
+commands_armamods.sh(){
+functionfile="${FUNCNAME}"
+fn_fetch_function	
+}
+
 command_backup.sh(){
 functionfile="${FUNCNAME}"
 fn_fetch_function

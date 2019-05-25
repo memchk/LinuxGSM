@@ -9,6 +9,7 @@ local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 ### Define all commands here ###
 ## User commands | Trigger commands | Description
 # Standard commands
+cmd_armamods=( "am;armamods" "command_armamods.sh" "Setup mods defined in config." )
 cmd_install=( "i;install" "command_install.sh" "Install the server." )
 cmd_auto_install=( "ai;auto-install" "fn_autoinstall" "Install the server without prompts." )
 cmd_start=( "st;start" "command_start.sh" "Start the server." )
