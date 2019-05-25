@@ -22,12 +22,12 @@ login ${steamuser} ${steampass}" >> $scriptfile
 
 for mod in "${workshopmods[@]}"; do
     modid=$(echo "$mod" | awk '{print $2}')
-    echo "workshop_download_item 107410 "${modid}" validate" >> $tmpfile
+    echo "workshop_download_item 107410 "${modid}" validate" >> $scriptfile
 done
 
-echo "quit" >> $tmpfile
+echo "quit" >> $scriptfile
 
-${steamcmddir}/steamcmd.sh +runscript $tmpfile 
+${steamcmddir}/steamcmd.sh +runscript $scriptfile 
 
 # Create mods folder if it does not exist, clear existing symlinks
 mkdir -p "$serverfiles/mods"
