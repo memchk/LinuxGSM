@@ -9,7 +9,6 @@ local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 ### Define all commands here ###
 ## User commands | Trigger commands | Description
 # Standard commands
-cmd_armamods=( "am;armamods" "command_armamods.sh" "Setup mods defined in config." )
 cmd_install=( "i;install" "command_install.sh" "Install the server." )
 cmd_auto_install=( "ai;auto-install" "fn_autoinstall" "Install the server without prompts." )
 cmd_start=( "st;start" "command_start.sh" "Start the server." )
@@ -35,6 +34,7 @@ cmd_mods_install=( "mi;mods-install" "command_mods_install.sh" "View and install
 cmd_mods_remove=( "mr;mods-remove" "command_mods_remove.sh" "View and remove an installed mod/addon." )
 cmd_mods_update=( "mu;mods-update" "command_mods_update.sh" "Update installed mods/addons." )
 # Server specific
+cmd_armamods=( "am;armamods" "command_armamods.sh" "Setup mods defined in config." )
 cmd_change_password=( "pw;change-password" "command_ts3_server_pass.sh" "Change TS3 serveradmin password." )
 cmd_install_default_resources=( "ir;install-default-resources" "command_install_resources_mta.sh" "Install the MTA default resources." )
 cmd_wipe=( "wi;wipe" "command_wipe.sh" "Wipe your main game server data." )
@@ -123,6 +123,11 @@ fi
 # Squad license exclusive
 if [ "${shortname}" == "squad" ]; then
 	currentopt+=( "${cmd_install_squad_license[@]}" )
+fi
+
+# Arma 3 exclusive
+if [ "${shortname}" == "arma3" ]; then
+	currentopt+=( "${cmd_armamods[@]}" )
 fi
 
 ## Mods commands
