@@ -50,8 +50,9 @@ if [ ! -d "$serverfiles/a3_keys" ]; then
     cp -r "$serverfiles/keys" "$serverfiles/a3_keys"
     rm -r "$serverfiles/keys"
     mkdir -p "$serverfiles/keys"
-    ln -s "$serverfiles/a3_keys/a3.bikey" "$serverfiles/keys/"
 fi
+
+ln -s "$serverfiles/a3_keys/a3.bikey" "$serverfiles/keys/"
 
 for mod in "${workshopmods[@]}"; do
     modname=$(echo "$mod" | awk '{print $1}')
